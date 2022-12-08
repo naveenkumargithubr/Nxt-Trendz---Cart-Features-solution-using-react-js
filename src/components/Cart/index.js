@@ -3,8 +3,8 @@ import CartListView from '../CartListView'
 
 import CartContext from '../../context/CartContext'
 import EmptyCartView from '../EmptyCartView'
-import CartSummary from '../CartSummary'
-
+import CartSummary from '../CartSummary'// import the cartSummury from the cartSummury component
+ 
 import './index.css'
 
 const Cart = () => (
@@ -22,9 +22,13 @@ const Cart = () => (
         <>
           <Header />
           <div className="cart-container">
+        // if the cart is empty then show empty cart view with the img
             {showEmptyView ? (
               <EmptyCartView />
-            ) : (
+            ) : 
+      
+       // else display the heading and cartlist and cart summary
+             (
               <div className="cart-content-container">
                 <h1 className="cart-heading">My Cart</h1>
                 <button
@@ -35,7 +39,7 @@ const Cart = () => (
                   Remove All
                 </button>
                 <CartListView />
-                <CartSummary />
+                <CartSummary />  // if items are add to the cart and add total items in the cart and also total quantity
               </div>
             )}
           </div>
