@@ -12,7 +12,7 @@ const CartSummary = () => (
 
       // now implement the total  callback function using the foreach method
       cartList.forEach(eachItem => {
-        total += eachItem.price * eachItem.quantity
+        total += eachItem.price * eachItem.quantity  // add a total price (price * quantity)
       })
 
       return (
@@ -24,11 +24,11 @@ const CartSummary = () => (
             <p className="desc">
               <span className="length">{cartList.length} </span> items in cart
             </p>
-            <button type="button" className="small-btn">
+            <button type="button" className="small-btn"> // btn is hide in large devices
               CheckOut
             </button>
           </div>
-          <button type="button" className="large-btn">
+          <button type="button" className="large-btn"> // btn is hide in small devices
             CheckOut
           </button>
         </>
