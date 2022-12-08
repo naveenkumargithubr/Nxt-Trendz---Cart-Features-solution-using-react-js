@@ -10,20 +10,24 @@ const CartItem = props => (
     {value => {
       const {
         removeCartItem,
-        incrementCartItemQuantity,
+        incrementCartItemQuantity,  // access the inc and dec methods using the consumer
         decrementCartItemQuantity,
       } = value
       const {cartItemDetails} = props
       const {id, title, brand, quantity, price, imageUrl} = cartItemDetails
+      
+      // remove a item from the cart 
       const onRemoveCartItem = () => {
         removeCartItem(id)
       }
       // TODO: Update the functionality to increment and decrement quantity of the cart item
 
+      //if user click on the minus btn count should be decrement by one
       const onClickMinus = () => {
         decrementCartItemQuantity(id)
       }
 
+         //if user click on the plus btn count should be increment by one
       const onClickPlus = () => {
         incrementCartItemQuantity(id)
       }
