@@ -19,6 +19,7 @@ class App extends Component {
 
   //   TODO: Add your code for remove all cart items, increment cart item quantity, decrement cart item quantity, remove cart item
 
+  // remove a item from the cartlist first we get the id and then if the id is not equal to the item id then remove from the list and update a new carList
   removeCartItem = id => {
     const {cartList} = this.state
     const updatedCartList = cartList.filter(eachId => eachId.id !== id)
@@ -59,23 +60,29 @@ class App extends Component {
     }
   }
 
+  // remove all the the items in the cart list
   removeAllCartItems = () => {
     this.setState({cartList: []})
   }
 
+  
+// add a unique item to the cart that means if we select on item in products later we again select a same item  on that time we only add one item in the cart duplicate item quantity will be updated 
+  
   addCartItem = product => {
-    // this.setState(prevState => ({cartList: [...prevState.cartList, product]}))
+    // this.setState(prevState => ({cartList: [...prevState.cartList, product]})) => this line is only add the items in the cart
     //   TODO: Update the code here to implement addCartItem
+    
+    // the below code is add a unique item in the cart
     const {cartList} = this.state
-    const productObject = cartList.find(eachItem => eachItem.id === product.id)
+    const productObject = cartList.find(eachItem => eachItem.id === product.id) // first find the item id
 
     // if the same product item is found add the item quantity and then display the item
     if (productObject) {
       this.setState(prevState => ({
         cartList: prevState.cartList.map(eachItem => {
           if (productObject.id === eachItem.id) {
-            const updatedQuantity = eachItem.quantity + product.quantity
-            return {...eachItem, quantity: updatedQuantity}
+            const updatedQuantity = eachItem.quantity + product.quantity // same item is found then update the quantity
+            return {...eachItem, quantity: updatedQuantity} // finally return the updated Quantity list
           }
           return eachItem
         }),
@@ -93,6 +100,7 @@ class App extends Component {
     const {cartList} = this.state
 
     return (
+      // updating all the context methods
       <CartContext.Provider
         value={{
           cartList,
